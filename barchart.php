@@ -132,7 +132,7 @@ $data_produk = json_encode($hasil);
             type: 'column'
         },
         title: {
-            text: 'Data Produk Terlaris per Kategori dan Bulan'
+            text: 'Data Produk Kategori Terlaris per-Bulan'
         },
         subtitle: {
             text: 'Source: Database projectuas_'
