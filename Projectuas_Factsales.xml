@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+<Schema name="projectuas_">
+<!--
+  == This software is subject to the terms of the Eclipse Public License v1.0
+  == Agreement, available at the following URL:
+  == http://www.eclipse.org/legal/epl-v10.html.
+  == You must accept the terms of that agreement to use this software.
+  ==
+  == Copyright (C) 2000-2005 Julian Hyde
+  == Copyright (C) 2005-2011 Pentaho and others
+  == All Rights Reserved.
+  -->
+
+<!-- Shared dimensions -->
+
+  
+
+<!-- Sales -->
+<Cube name="Sales" defaultMeasure="SalesAmount">
+    <Table name="factsales"/>
+
+    <!-- Time Dimension -->
+    <Dimension name="Time" foreignKey="TimeID">
+      <Hierarchy hasAll="true" allMemberName="All Times" primaryKey="TimeID">
+        <Table name="dimtimeall"/>
+        <Level name="Year" column="Tahun" type="Numeric" uniqueMembers="true" levelType="TimeYears"/>
+        <Level name="Month" column="Bulan" type="Numeric" uniqueMembers="false" levelType="TimeMonths"/>
+        <Level name="Date" column="Tanggal" type="Numeric" uniqueMembers="false" levelType="TimeDays"/>
+      </Hierarchy>
+    </Dimension>
+
+    <!-- Product Dimension -->
+    <Dimension name="Product" foreignKey="ProductID">
+      <Hierarchy hasAll="true" allMemberName="All Products" primaryKey="ProductID">
+        <Table name="dimproduct"/>
+        <Level name="Category" column="ProductCategory"/>
+        <Level name="SubCategory" column="ProductSubCategory"/>
+        <Level name="Name" column="ProductName"/>
+      </Hierarchy>
+    </Dimension>
+
+    <!-- Employee Dimension -->
+    <Dimension name="Employee" foreignKey="EmployeeID">
+      <Hierarchy hasAll="true" allMemberName="All Employees" primaryKey="EmployeeID">
+        <Table name="dimemployee"/>
+        <Level name="Name" column="EmployeeName"/>
+        <Level name="Gender" column="Gender"/>
+        <Level name="Age" column="Age"/>
+      </Hierarchy>
+    </Dimension>
+
+    <!-- Customer Dimension -->
+    <Dimension name="Customer" foreignKey="CustomerID">
+      <Hierarchy hasAll="true" allMemberName="All Customers" primaryKey="CustomerID">
+        <Table name="dimcustomer"/>
+        <Level name="Name" column="CustomerName"/>
+        <Level name="Type" column="CustomerType"/>
+      </Hierarchy>
+    </Dimension>
+
+    <!-- Sales Territory Dimension -->
+    <Dimension name="Sales Territory" foreignKey="TerritoryID">
+      <Hierarchy hasAll="true" allMemberName="All Territories" primaryKey="TerritoryID">
+        <Table name="dimsalesterritory"/>
+        <Level name="Territory" column="TerritoryName"/>
+        <Level name="Country Code" column="CountryRegionCode"/>
+        <Level name="Group" column="Group"/>
+      </Hierarchy>
+    </Dimension>
+
+    <!-- Measures -->
+    <Measure name="Sales Amount" column="SalesAmount" aggregator="sum" formatString="Standard"/>
+    <Measure name="Quantity Sold" column="QuantitySold" aggregator="sum" formatString="#,###"/>
+  </Cube>
+
+
+
+</Schema>
