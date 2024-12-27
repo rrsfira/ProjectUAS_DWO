@@ -4,7 +4,7 @@ Langkah-langkah yang dibutuhkan untuk menjalankan web dengan baik :
 - Install software mysql management: phpMyAdmin dari Xampp.
 - Install tomcat dan mondrian
 - Extract ProjectUAS_DWO.zip pada folder htdocs XAMPP (xampp/htdocs).
-- Extract mondrian.zip dari link bit.ly/mondrian_DWO ke dalam server Tomcat bawaan dari XAMPP(xampp/tomcat/webapps).
+- Pindahkan file Projectuas_FactProduct.jsp, Projectuas_FactProduct.xml, Projectuas_Factsales.jsp, Projectuas_Factsales.xml ke dalam folder C:\xampp\tomcat\webapps\mondrian\WEB-INF\queries
 - Jalankan Xampp control panel.
 - Start apache, mysql server, dan tomcat.
 - Buka phpMyAdmin (localhost/phpmyadmin).
